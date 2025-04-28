@@ -1,0 +1,126 @@
+.sidebarField {
+  margin-bottom: 2rem;
+}
+
+.repeatField {
+  li {
+    position: relative;
+
+    .delete {
+      position: absolute;
+      right: 1%;
+      bottom: 50%;
+      padding: 0;
+      border: none;
+      color: #fff;
+      border-radius: 50%;
+      width: 25px;
+      height: 25px;
+      cursor: pointer;
+
+      i {
+        font-size: 14px;
+      }
+    }
+
+    textarea,
+    input {
+      padding-right: 7% !important;
+    }
+  }
+}
+
+/*
+* SINGLE RECIPE
+*/
+
+aside {
+  .widget {
+    margin-bottom: 1rem;
+    background-color: #fff;
+    padding: 1rem;
+
+    .widget_title {
+      margin-top: 0;
+      padding-top: 0;
+      text-transform: uppercase;
+      font-size: 1.5rem;
+    }
+
+    a.col {
+      margin-bottom: 0.75rem;
+    }
+  }
+
+  .ingredients {
+    ul {
+      margin-top: 0;
+      margin-bottom: 0;
+
+      li {
+        padding: 0.5rem 0.25rem;
+        margin: 0;
+        border-bottom: 1px solid #d9d9d9;
+
+        &:last-child {
+          border-bottom: none;
+        }
+      }
+    }
+  }
+
+  .allergens {
+    li {
+      color: #8a8a8a;
+    }
+  }
+}
+
+
+.recipeContent {
+  h1.recipeTitle {
+    font-size: 2rem;
+    text-transform: uppercase;
+    color: $primary-color;
+    margin-top: 0;
+  }
+
+  .method {
+    h3 {
+      font-size: 1.5rem;
+      text-transform: uppercase;
+    }
+
+    ol {
+      padding-left: 0.75rem;
+
+      li {
+        margin-bottom: 1rem;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid #d9d9d9;
+
+        &:last-child {
+          border-bottom: none;
+        }
+      }
+    }
+  }
+
+  .recipeMeta {
+    margin: 1rem 0;
+    padding: 1rem 0;
+    border-top: 1px solid #d9d9d9;
+    border-bottom: 1px solid #d9d9d9;
+  }
+}
+
+.relatedRecipes {
+  h2 {
+    font-size: 1.75rem;
+    text-transform: uppercase;
+  }
+}
+
+a.editRecipeBtn {
+  margin: 1rem 0 2rem 0;
+}

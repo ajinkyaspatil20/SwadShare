@@ -1,0 +1,12 @@
+{
+  "app.css": "css/app.8475c95f.css",
+  "app.js": "js/app.69ffac5d.chunk.js",
+  "npm.core-js.js": "js/npm.core-js.f6a28dc6.chunk.js",
+  "npm.jquery.js": "js/npm.jquery.8b4544f6.chunk.js",
+  "npm.materialize-css.js": "js/npm.materialize-css.317ee0da.chunk.js",
+  "runtime.js": "js/runtime.93d60c3a.js",
+  "vendor/MaterialIcons-Regular.eot": "vendor/MaterialIcons-Regular.eot",
+  "vendor/MaterialIcons-Regular.ttf": "vendor/MaterialIcons-Regular.ttf",
+  "vendor/MaterialIcons-Regular.woff": "vendor/MaterialIcons-Regular.woff",
+  "vendor/MaterialIcons-Regular.woff2": "vendor/MaterialIcons-Regular.woff2"
+}

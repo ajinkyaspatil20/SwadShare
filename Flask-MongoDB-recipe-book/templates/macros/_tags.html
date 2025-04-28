@@ -1,0 +1,10 @@
+{% macro render_tags(tags, title, tag_name) %}
+    <h4 class="col s12 widget_title">{{ title }}</h4>
+    {% for tag in tags %}
+        <a href="{{ url_for('index', tag_name=tag_name, tag_value=tag) }}" class="col">
+            <button class="btn">
+                {{ tag|safe }}
+            </button>
+        </a>
+    {% endfor %}
+{% endmacro %}

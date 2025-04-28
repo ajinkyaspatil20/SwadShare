@@ -1,0 +1,29 @@
+<header class="topHeader">
+  <nav>
+    <div class="nav-wrapper">
+      <a href="{{ url_for('index') }}" class="brand-logo">Awesome recipes</a>
+      <ul class="right navigation">
+        {% if user.id and user.username %}
+          <li>
+            <a href="{{ url_for('index', author_name=user.username) }}">
+              <i class="material-icons left">account_circle</i>
+              Hello, {{ user.username|capitalize }}
+            </a>
+          </li>
+          <li><a href="{{ url_for('logout') }}">Logout</a></li>
+        {% else %}
+          <li><a href="{{ url_for('login') }}">Login</a></li>
+          <li><a href="{{ url_for('register') }}">Register</a></li>
+        {% endif %}
+        <li>
+          <a href="{{ url_for('new_recipe') }}" class="waves-effect waves-light btn red darken-4">
+            Add recipe <i class="material-icons right">add</i>
+          </a>
+        </li>
+      </ul>
+      <button id="menuOpener" class="left hide-on-large-only menuOpener">
+        <i class="material-icons">menu</i>
+      </button>
+    </div>
+  </nav>
+</header>

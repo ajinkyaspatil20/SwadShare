@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+{% block content %}
+    {% include 'macros/_messages.html' %}
+    {% if recipe %}
+        <div class="row">
+            <article class="col m7 recipeContent">
+                <h1 class="recipeTitle">{{ recipe.title }}</h1>
+                {% if recipe.introduction %}
+                    <section class="introduction">
+                        {{ recipe.introduction }}
+                    </section>
+                {% endif %}
+                {% if recipe.method %}
+                    <section class="method">
+                        <h3>Method</h3>
+                        <ol>
+                            {% for method in recipe.method %}
+                                <li>{{ method }}</li>
+                            {% endfor %}
+                        </ol>
+                    </section>
+                {% endif %}
+                <section class="recipeMeta row">
+                    {% from "macros/_recipe_meta.html" import recipe_meta with context %}
+                    {{ recipe_meta(recipe, 's6 l3', 'single') }}
+                </section>
+                {% if user.username == recipe.author %}
+                    <a href="{{ url_for('edit_recipe', recipe_id=recipe._id) }}"
+                       class="waves-effect waves-light btn-large editRecipeBtn">
+                        Edit recipe <i class="material-icons right">edit</i>
+                    </a>
+                {% endif %}
+            </article>
+            <aside class="col m4 right">
+                {% if recipe.ingredients|length %}
+                    <div class="widget ingredients row">
+                        <h4 class="col s12 widget_title">Ingredients</h4>
+                        <ul class="col s12">
+                            {% for ingredient in recipe.ingredients %}
+                                <li>{{ ingredient }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
+                {% from "macros/_tags.html" import render_tags %}
+                {% if recipe.categories|length %}
+                    <div class="widget categories row">
+                        {{ render_tags(recipe.categories, 'Categories', 'categories') }}
+                    </div>
+                {% endif %}
+                {% if recipe.cuisines|length %}
+                    <div class="widget cuisines row">
+                        {{ render_tags(recipe.cuisines, 'Cuisines', 'cuisines') }}
+                    </div>
+                {% endif %}
+                {% if recipe.allergens|length %}
+                    <div class="widget allergens row">
+                        <h4 class="col s12 widget_title">Allergens</h4>
+                        <ul class="s12 browser-default">
+                            {% for allergen in recipe.allergens %}
+                                <li>{{ allergen|capitalize|safe }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
+            </aside>
+        </div>
+        {% if related|length %}
+            <div class="relatedRecipes">
+                <div class="row recipeArchive flexPos">
+                    <h2 class="col s12">Related recipes</h2>
+                    {% from 'macros/_recipe_card.html' import recipe_card with context %}
+                    {% for related_recipe in related %}
+                        {{ recipe_card(related_recipe, 'm6 xl4') }}
+                    {% endfor %}
+                </div>
+            </div>
+        {% endif %}
+    {% else %}
+        <div class="center-align alerts">
+            <p class="warning">No recipe found</p>
+            <a href="{{ url_for('index') }}" class="waves-effect waves-light btn red darken-4">Go to home page</a>
+        </div>
+    {% endif %}
+{% endblock %}

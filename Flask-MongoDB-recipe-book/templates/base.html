@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Recipe book</title>
+    {{ manifest_css('vendors~app.css') | safe }}
+    {{ manifest_css('app.css') | safe }}
+</head>
+<body class="{{ body_class }}">
+{% include '_header.html' %}
+<main class="content">
+    <div class="container">
+        {% block title %}
+        {% endblock %}
+        {% block content %}
+        {% endblock %}
+    </div>
+</main>
+{{ manifest_js('runtime.js') | safe }}
+{{ manifest_js('npm.core-js.js') | safe }}
+{{ manifest_js('npm.materialize-css.js') | safe }}
+{{ manifest_js('npm.style-loader.js') | safe }}
+{{ manifest_js('npm.jquery.js') | safe }}
+{{ manifest_js('vendors~app.js') | safe }}
+{{ manifest_js('npm.material-icons.js') | safe }}
+{{ manifest_js('app.js') | safe }}
+</body>
+</html>

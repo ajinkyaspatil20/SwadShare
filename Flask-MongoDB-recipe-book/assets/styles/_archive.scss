@@ -1,0 +1,90 @@
+.recipeArchive {
+  &.flexPos {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  & > .col {
+    margin-bottom: 1.5rem;
+    float: none;
+    margin-left: 0 !important;
+  }
+}
+
+.recipe_card {
+  padding: 30px;
+  background-color: #fff;
+  height: 100%;
+
+  .card_title {
+    margin-top: 0;
+    padding-top: 0;
+    text-transform: uppercase;
+    line-height: 135%;
+    font-size: 1.3rem;
+
+    a {
+      color: $primary-color;
+
+      &:hover {
+        color: $link-color;
+      }
+    }
+  }
+
+  .editBtnContainer {
+    margin-top: 1rem;
+
+    @media (min-width: 768px) {
+      margin-top: 0;
+    }
+  }
+
+  .recipeMeta {
+    border-top: 1px solid #d9d9d9;
+    border-bottom: 1px solid #d9d9d9;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+
+    .col {
+      margin-bottom: 0.5rem;
+    }
+  }
+}
+
+.archive_title {
+  font-size: 2rem;
+  margin-top: 1rem;
+  color: $primary-color;
+}
+
+button.voteForRecipe {
+  background-color: transparent;
+  color: #000;
+  border: none;
+  cursor: pointer;
+  box-shadow: none !important;
+  padding: 0;
+
+  &.voted,
+  &:hover {
+    color: $primary-color;
+  }
+
+  &:hover,
+  &:focus {
+    background-color: transparent;
+  }
+
+  &.disabled {
+    color: #9F9F9F !important;
+    cursor: default;
+    pointer-events: none;
+  }
+}
+
+.recipeAction {
+  button[type='submit'] {
+    margin-bottom: 1rem;
+  }
+}

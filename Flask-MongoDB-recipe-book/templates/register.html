@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block title %}
+  <div class="row">
+    <h3 class="col s12 m6 offset-m3">{{ title }}</h3>
+  </div>
+{% endblock %}
+{% block content %}
+  {% include 'macros/_messages.html' %}
+  <div class="row">
+    <div class="col s12 m6 offset-m3">
+      <form action="{{ url_for('register') }}" method="post">
+        {% from "macros/_formhelpers.html" import render_field %}
+        <div class="row">
+          {{ render_field(form.username, 's12') }}
+          {{ render_field(form.password, 's12') }}
+          {{ render_field(form.confirm, 's12') }}
+          <div class="col s12">
+            <button class="waves-effect waves-light btn-large red darken-4" type="submit">{{ title }}</button>
+          </div>
+        </div>
+      </form>
+      <div class="row">
+        <div class="col s12">
+          If you have already registered, <a href="{{ url_for('login') }}">login here</a>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

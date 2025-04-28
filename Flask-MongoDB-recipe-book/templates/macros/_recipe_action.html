@@ -1,0 +1,39 @@
+{% macro recipe_action(recipe_id, title) %}
+    <div class="row recipeAction">
+        <div class="col m6">
+            <button class="waves-effect waves-light btn-large teal darken-3"
+                    type="submit">
+                {{ title }}
+                <i class="material-icons right">
+                    {{ 'edit' if recipe else 'add' }}
+                </i>
+            </button>
+        </div>
+        {% if recipe_id %}
+            <div class="col m6 right-align">
+                <a href="#confirmDeletion"
+                   class="modal-trigger waves-effect waves-light btn-large red darken-4">
+                    delete recipe <i class="material-icons right">delete</i>
+                </a>
+            </div>
+        {% endif %}
+    </div>
+    {% if recipe_id %}
+        <div id="confirmDeletion" class="modal bottom-sheet">
+            <div class="row">
+                <div class="col m6 offset-m3">
+                    <div class="modal-content">
+                        <h4>Delete recipe?</h4>
+                        <p>Are you sure? This action is not reversible.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="{{ url_for('delete_recipe', recipe_id=recipe_id) }}"
+                           class="btn waves-effect waves-light red darken-4">Delete</a>
+                        <a href="#!" class="modal-close btn waves-effect waves-light ">Cancel</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    {% endif %}
+{% endmacro %}

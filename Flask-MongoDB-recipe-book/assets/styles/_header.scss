@@ -1,0 +1,75 @@
+header.topHeader {
+  background-color: $primary-color;
+  padding: 0 30px;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+
+  nav {
+    background-color: transparent;
+    box-shadow: none;
+
+    .brand-logo {
+      color: #fff;
+      font-size: 1rem;
+
+      @media (min-width: 420px) {
+        font-size: 1.2rem;
+      }
+
+      &:hover {
+        color: color('green', 'lighten-5');
+      }
+    }
+  }
+}
+
+.menuOpener {
+  padding: 0;
+  color: #fff;
+  background: none;
+  border: none;
+  cursor: pointer;
+
+  &:focus {
+    background: none;
+  }
+}
+
+.navigation {
+  @media (max-width: 991px) {
+    position: fixed;
+    left: 0;
+    max-width: 58%;
+    width: 230px;
+    top: $sm-header-height;
+    background-color: $primary-color;
+    height: calc(100% - #{$sm-header-height});
+    transition: transform 0.3s;
+    transform: translateX(-100%);
+    z-index: 11;
+
+    li {
+      float: none;
+    }
+  }
+}
+
+.navRolled {
+  .navigation {
+    transform: translateX(0);
+  }
+}
+
+// hide the navigation on specific pages
+body {
+  &.login,
+  &.register {
+    .navigation,
+    .menuOpener {
+      // display: none;
+    }
+  }
+}

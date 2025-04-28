@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+{% block content %}
+    {% include 'macros/_messages.html' %}
+    <div class="row">
+        <h1 class="archive_title col m12 l6">{{ title }}</h1>
+        {% if page_attr.name == 'author' %}
+            <div class="col s12 m6 l3 {{ 'offset-m3' if not recipes|length else '' }}">
+                <div class="input-field">
+                    <select id="show" class="optionLink">
+                        <option value="/author/{{ page_attr.author }}/page/1"
+                                {% if 'liked' not in page_attr %}selected{% endif %}>{{ 'Your recipes' if
+                                'own_recipes' in page_attr else 'Author recipes' }}
+                        </option>
+                        <option
+                            value="/author/{{ page_attr.author }}/show/liked/page/1/order-by/{{ order_by }}"
+                            {% if 'liked' in page_attr %}selected{% endif %}>{{ 'Your liked recipes' if 'own_recipes' in
+                                page_attr else 'Author likes' }}
+                        </option>
+                    </select>
+                    <label for="orderBy">Show</label>
+                </div>
+            </div>
+        {% endif %}
+        {% if recipes|length %}
+            <div class="col s12 m6 l3 right">
+                <div class="input-field">
+                    <select id="orderBy" class="optionLink">
+                        <option value="{{ page_attr.link }}/page/{{ page }}"
+                                {% if order_by == 'created' %}selected{% endif %}>Latest
+                        </option>
+                        <option value="{{ page_attr.link }}/page/{{ page }}/order-by/views"
+                                {% if order_by == 'views' %}selected{% endif %}>Most popular
+                        </option>
+                        <option value="{{ page_attr.link }}/page/{{ page }}/order-by/likes"
+                                {% if order_by == 'likes' %}selected{% endif %}>Most liked
+                        </option>
+                    </select>
+                    <label for="orderBy">Order by</label>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+    {% if recipes|length %}
+        <div class="row recipeArchive flexPos threeColumn">
+            {% from "macros/_recipe_card.html" import recipe_card with context %}
+            {% for recipe in recipes %}
+                {{ recipe_card(recipe, 'm6 xl4') }}
+            {% endfor %}
+        </div>
+        {% if pagination > 1 %}
+            <ul class="pagination">
+                <li {% if page == 1 %}class="disabled"{% endif %}>
+                    <a href="{{ pagination_url('prev',page_attr, page, order_by ) }}">
+                        <i class="material-icons">chevron_left</i>
+                    </a>
+                </li>
+                {% for p in range(1, pagination + 1) %}
+                    <li {% if p == page %}class="active"{% endif %}>
+                        <a href="{{ pagination_url('',page_attr, p, order_by ) }}">{{ p }}</a>
+                    </li>
+                {% endfor %}
+                <li {% if page >= pagination %}class="disabled"{% endif %}>
+                    <a href="{{ pagination_url('next', page_attr, page, order_by, pagination ) }}">
+                        <i class="material-icons">chevron_right</i>
+                    </a>
+                </li>
+            </ul>
+        {% endif %}
+    {% else %}
+        <div class="center-align alerts" style="clear: both">
+            {% if page_attr.author == user.username %}
+                <p class="success">
+                    It seems you haven't got any recipe added
+                </p>
+                <a href="{{ url_for('new_recipe') }}"
+                   class="waves-effect waves-light btn-large red darken-4">
+                    Add recipe <i class="material-icons right">add</i></a>
+            {% else %}
+                <p class="warning">
+                    Any recipes found on selected criteria.
+                </p>
+                <a href="javascript:history.go(-1)" class="waves-effect waves-light btn red darken-4">Go to previous
+                    page</a>
+            {% endif %}
+        </div>
+    {% endif %}
+{% endblock %}

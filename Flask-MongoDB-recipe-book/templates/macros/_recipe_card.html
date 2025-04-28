@@ -1,0 +1,30 @@
+{% macro recipe_card(recipe, single_class) %}
+    <div class="col {{ single_class }}">
+        <article class="recipe_card">
+            <h5 class="card_title">
+                <a href="{{ url_for('view_recipe', recipe_id=recipe._id) }}">
+                    {{ recipe.title }}
+                </a>
+            </h5>
+            {% if recipe.introduction %}
+                <p>{{ string_limit(recipe.introduction, 30) }}</p>
+            {% endif %}
+            <div class="row recipeMeta">
+                {% from "macros/_recipe_meta.html" import recipe_meta with context %}
+                {{ recipe_meta(recipe, 'l6 s12', 'archive') }}
+            </div>
+            <div class="row">
+                <div class="col s12 m6">
+                    <a href="{{ url_for('view_recipe', recipe_id=recipe._id) }}"
+                       class="waves-effect waves-light btn red darken-4">View recipe</a>
+                </div>
+                <div class="col s12 m6 editBtnContainer">
+                    {% if user.username == recipe.author %}
+                        <a href="{{ url_for('edit_recipe', recipe_id=recipe._id) }}"
+                           class="waves-effect waves-light btn">Edit recipe</a>
+                    {% endif %}
+                </div>
+            </div>
+        </article>
+    </div>
+{% endmacro %}

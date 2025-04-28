@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="center-align alerts">
+        <p class="{{ message_class }}">{{ message }}</p>
+        <a href="{{ url_for('index') }}" class="waves-effect waves-light btn {{ btn_class }}">
+            Go to home page
+        </a>
+    </div>
+{% endblock %}

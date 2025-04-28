@@ -1,0 +1,23 @@
+{% macro recipe_meta(recipe, single_class, type) %}
+    <div class="col {{ single_class }}">
+        <i class="material-icons left">account_circle</i>
+        <a href="{{ url_for('index', author_name=recipe.author) }}">
+            {{ recipe.author|capitalize }}
+        </a>
+    </div>
+    <div class="col {{ single_class }}">
+        <i class="material-icons left">visibility</i>
+        <span {% if type == 'single' %}id="recipeViews"{% endif %}>{{ recipe.views }}</span> views
+    </div>
+    <div class="col {{ single_class }}">
+        <button class="voteForRecipe {{ recipe_vote_class(recipe) }}"
+                {% if user %}data-recipe-id="{{ recipe._id }}"{% endif %}>
+            <i class="material-icons left">thumb_up</i>
+            <span {% if type == 'single' %}id="recipeLikes"{% endif %}>{{ recipe.likes }}</span> likes
+        </button>
+    </div>
+    <div class="col {{ single_class }}">
+        <i class="material-icons left">today</i>
+        {{ recipe.created.strftime('%d.%m.%Y') }}
+    </div>
+{% endmacro %}

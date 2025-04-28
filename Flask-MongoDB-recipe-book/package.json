@@ -1,0 +1,44 @@
+{
+  "name": "awesome-recipes",
+  "version": "1.0.0",
+  "description": "Webpack for assets files",
+  "scripts": {
+    "build": "webpack --config assets/webpack/webpack.config.prod.js  --colors",
+    "start": "webpack --watch --config assets/webpack/webpack.config.dev.js"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.1.2",
+    "@babel/plugin-proposal-class-properties": "^7.1.0",
+    "@babel/plugin-syntax-dynamic-import": "^7.0.0",
+    "@babel/preset-env": "^7.1.0",
+    "babel-loader": "^8.0.4",
+    "browser-sync": "^2.26.5",
+    "browser-sync-webpack-plugin": "^2.2.2",
+    "clean-webpack-plugin": "^0.1.19",
+    "copy-webpack-plugin": "^4.5.4",
+    "css-loader": "^1.0.0",
+    "eslint": "^5.7.0",
+    "eslint-loader": "^2.1.1",
+    "eslint-plugin-import": "^2.17.2",
+    "file-loader": "^2.0.0",
+    "html-webpack-plugin": "^4.0.0-beta.2",
+    "mini-css-extract-plugin": "^0.4.4",
+    "node-sass": "^4.12.0",
+    "optimize-css-assets-webpack-plugin": "^5.0.1",
+    "sass-loader": "^7.1.0",
+    "style-loader": "^0.23.1",
+    "terser-webpack-plugin": "^1.2.3",
+    "webpack": "^4.21.0",
+    "webpack-assets-manifest": "^3.1.1",
+    "webpack-cli": "^3.1.2",
+    "webpack-dev-server": "^3.1.9",
+    "webpack-merge": "^4.1.4"
+  },
+  "dependencies": {
+    "@babel/polyfill": "^7.0.0",
+    "core-js": "^3.0.1",
+    "jquery": "^3.4.0",
+    "material-icons": "^0.3.1",
+    "materialize-css": "^1.0.0"
+  }
+}

@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+{% block title %}
+    <h3>{{ title }}</h3>
+{% endblock %}
+{% block content %}
+    <div class="row">
+        <div class="col s12">
+            {% include 'macros/_messages.html' %}
+            {% from "macros/_formhelpers.html" import render_field %}
+            <form action="{{ form_action }}" method="post">
+                <div class="row">
+                    <div class="col m7">
+                        <div class="row">
+                            {{ render_field(form.title, 's12') }}
+                            {{ render_field(form.introduction, 's12', class='materialize-textarea') }}
+                            <div class="repeatField col s12">
+                                {{ form.method }}
+                                {% if form.method.errors %}
+                                    <ul class=errors>
+                                        <li>Method is required you should add at least one method</li>
+                                    </ul>
+                                {% endif %}
+                                <button type="button" class="addField waves-light btn-small">
+                                    Add method <i class="material-icons right">add</i>
+                                </button>
+
+                            </div>
+                            <div class="hidden">
+                                {{ form.categories }}
+                                {{ form.cuisines }}
+                                {{ form.allergens }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col m4 offset-m1 sidebar">
+                        <div class="repeatField sidebarField">
+                            {{ form.ingredients }}
+                            {% if form.ingredients.errors %}
+                                <ul class=errors>
+                                    <li>
+                                        Ingredients are required you should add at least one ingredient
+                                    </li>
+                                </ul>
+                            {% endif %}
+                            <button type="button" class="addField waves-light btn-small">
+                                Add ingredient
+                                <i class="material-icons right">add</i>
+                            </button>
+                        </div>
+
+                        <div id="categoryChips" class="sidebarField">
+                            <p class="caption">
+                                Categories <br>
+                                <small>To add category type and hit enter</small>
+                            </p>
+                            <input class="input" placeholder="Enter a category">
+                        </div>
+                        <div id="cuisineChips" class="chips sidebarField chips-initial input-field">
+                            <p class="caption">
+                                Cuisines <br>
+                                <small>To add cuisine type and hit enter</small>
+                            </p>
+
+                            <input class="input" placeholder="Enter a cuisine">
+                        </div>
+                        <div id="allergensChips" class="chips sidebarField chips-initial input-field">
+                            <p class="caption">
+                                Allergens <br>
+                                <small>To add allergen type and hit enter</small>
+                            </p>
+
+                            <input class="input" placeholder="Enter allergen">
+                        </div>
+                    </div>
+                </div>
+                {% from 'macros/_recipe_action.html' import recipe_action %}
+                {{ recipe_action(recipe_id, title) }}
+            </form>
+        </div>
+    </div>
+{% endblock %}
