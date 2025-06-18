@@ -1,8 +1,11 @@
-# Awesome recipes
+# Swadshare recipes...
+
 The application allows the user to add and managing cooking recipes. It allows the user to register, like other recipes and displaying them in a common way such as order by most recent, most popular, most liked. The recipes could be assigned to categories, cuisines each one has got detailed preparation instructions, allergens list.
 
 ## UX
 The project is built in the minimal layout. Each recipe has got statistic such as views, likes, date created so the user could order its own way on the archive page. To add recipe a user need to register. The application has implemented simple ACL(access-control-list) protection, for example, the author can't edit/delete recipe someone else.
+![Screenshot 2025-06-18 140125](https://github.com/user-attachments/assets/21014256-6f85-46de-886a-f0a9d65dcf47)
+![Screenshot 2025-06-18 140107](https://github.com/user-attachments/assets/ad912c03-2127-4657-8f39-9bc6a56e3c84)
 
 [The wireframe](https://xd.adobe.com/view/634d2933-4989-4354-4df1-ba55f3eb927e-157c/?fullscreen)
 
@@ -47,9 +50,6 @@ The project is built in the minimal layout. Each recipe has got statistic such a
 * Form unit test is written to check forms validation
 * The website has been tested on various screen sizes
 
-## Deployment
-The application is deployed to [Heroku](https://awesome-recipes-ci.herokuapp.com/)
-The project used dotenv library to store secret data
 
 ### Assets source files
 Assets files are in assets folder
