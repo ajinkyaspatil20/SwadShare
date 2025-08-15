@@ -4,8 +4,8 @@ The application allows the user to add and managing cooking recipes. It allows t
 
 ## UX
 The project is built in the minimal layout. Each recipe has got statistic such as views, likes, date created so the user could order its own way on the archive page. To add recipe a user need to register. The application has implemented simple ACL(access-control-list) protection, for example, the author can't edit/delete recipe someone else.
-![Screenshot 2025-06-18 140125](https://github.com/user-attachments/assets/21014256-6f85-46de-886a-f0a9d65dcf47)
-![Screenshot 2025-06-18 140107](https://github.com/user-attachments/assets/ad912c03-2127-4657-8f39-9bc6a56e3c84)
+<img width="1470" height="736" alt="image" src="https://github.com/user-attachments/assets/7f0b9775-4927-447d-b455-85c742fb507b" />
+
 
 [The wireframe](https://xd.adobe.com/view/634d2933-4989-4354-4df1-ba55f3eb927e-157c/?fullscreen)
 
